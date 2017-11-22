@@ -1,7 +1,7 @@
 # Contributing to the Documentation
 The official documentation on the Sails website is compiled from markdown files in the [sails-docs](https://github.com/balderdashy/sails-docs) repo. Please send a pull request to the **master** branch with corrections/additions and they'll be double-checked and merged as soon as possible.
 
-We are open to suggestions about the process we're using to manage our documentation, and to work with the community in general.  Please post to the Google Group with your ideas- or if you're interested in helping directly, contact @fancydoilies, @rudeboot, or @mikermcneil on Twitter.
+We are open to suggestions about the process we're using to manage our documentation, and to work with the community in general.  Please post to the [Google Group](https://groups.google.com/forum/#!forum/sailsjs) with your ideas- or if you're interested in helping directly, contact @fancydoilies, @rudeboot, or @mikermcneil on Twitter.
 
 #### What branch should I edit?
 
@@ -12,7 +12,6 @@ On the other hand, if you are making an edit related to an unreleased feature in
 
 | Branch (in `sails-docs`)                    | Documentation for Sails Version...                                   | Preview At...      |
 |-------------------------------------------------------------------------------------|------------------------|:-------------------|
-| [`1.0`](https://github.com/balderdashy/sails-docs/tree/1.0) | Upcoming v1.0 release                          | [next.sailsjs.com](http://next.sailsjs.com)
 | [`master`](https://github.com/balderdashy/sails-docs/tree/master) | [![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails) | [preview.sailsjs.com](http://preview.sailsjs.com)
 | [`0.12`](https://github.com/balderdashy/sails-docs/tree/0.12) | Sails v0.12.x | [sailsjs.com](http://sailsjs.com)
 | [`0.11`](https://github.com/balderdashy/sails-docs/tree/0.11) | Sails v0.11.x           | [0.11.sailsjs.com](http://0.11.sailsjs.com)

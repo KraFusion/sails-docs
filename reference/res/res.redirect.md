@@ -5,14 +5,15 @@ Redirect the requesting user-agent to the given absolute or relative url.
 
 ### Usage
 ```js
-return res.redirect(url);
+return res.redirect([status,] url);
 ```
 
 ### Arguments
 
 |   | Argument       | Type        | Details |
 |---|----------------|:-----------:|---------|
-| 1 | `url`          | ((string))  | A URL expression (see below for complete specification).<br/> e.g. `"http://google.com"` or `"/login"`
+| 1 | `status`       | ((integer)) |  (optional) a positive integer that corresponds to an [HTTP status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).  Defaults to 302 ("found").|
+| 2 | `url`          | ((string))  | A URL expression (see below for complete specification).<br/> e.g. `"http://google.com"` or `"/login"`
 
 
 
@@ -41,16 +42,17 @@ The final special-case is a back redirect, which allows you to redirect a reques
 return res.redirect('back');
 ```
 
+If you want to send a custom status code along with a redirect, you can do so by sending the status as the first argument to res.redirect:
+```javascript
+return res.redirect(301, '/foo');
+```
+
+
 ### Notes
 > + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
 > + When your app calls `res.redirect()`, Sails sends a response with status code [302](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#3xx_Redirection).  This instructs the user-agent to send a new request to the indicated URL.  There is no way to _force_ a user-agent to follow redirects, but most clients play nicely.
 > + In general, you should not need to use `res.redirect()` if a request "wants JSON" (i.e. [`req.wantsJSON`](http://sailsjs.com/documentation/reference/req/req.wantsJSON.html)).
-> + If a request originated from a Socket.io client, it always "wants JSON".  If you do call `res.redirect(http://sailsjs.com/documentation/reference/res/res.redirect.html)` for a socket request, Sails reroutes the request internally on the server, effectively "forcing" the redirect to take place (i.e. instead of sending a 302 status code, the server simply creates a new request to the redirect URL).
->  + As a result, redirects to external domains are not supported for socket requests (although this is technically possible by proxying).
->  + This behavior may change to more closely reflect HTTP in future versions of Sails.
-
-
-
+> + The [Sails socket client](http://sailsjs.com/documentation/reference/web-sockets/socket-client) does _not_ follow redirects, so if an action is called via a websocket request using (for example) [`io.socket.get()`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-get), it will simply receive a 302 status code and a header indicating the location of the desired resource.  It&rsquo;s up to the client-side code to decide how to handle redirects for websocket requests.
 
 
 
